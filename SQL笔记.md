@@ -212,8 +212,14 @@ DROP COLUMN column2,
 MODIFY column3 datatype;
 ```
 
+
 ***
 # 数据的更新与删除
 <img width="2620" height="3092" alt="img_1" src="https://github.com/user-attachments/assets/5a198082-f3b6-415f-9abe-1d81e42f349d" />
 
+***
+# 思维框架搭建
+<img width="989" height="804" alt="思维框架搭建" src="https://github.com/user-attachments/assets/f669f195-cf11-4c2a-abfd-36fda68f1e7e" />
 
+# 语法顺序
+<img width="796" height="603" alt="微信图片_20260818171407_780_26" src="https://github.com/user-attachments/assets/24800478-50e3-44ee-9fd3-1c14c1a8cbcf" />
