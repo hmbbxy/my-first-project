@@ -56,6 +56,7 @@
     + start 规定在字符串的何处开始
     + length 指定要截取的字符串长度
 ***
+
 # 计算公式
 ## ROI
 + 投资回报率=产出（销售收入）/投入（成本）
@@ -79,6 +80,19 @@
   + having必须在group by 后使用，表示对分组后的结果进行筛选
   + 与where的区别：where过滤行，having过滤组
 <img width="1325" height="842" alt="day9" src="https://github.com/user-attachments/assets/725c21d4-1675-469c-b0f3-bef08113434f" />
+
+***
+# 多种条件梳理
++ case when+then
+```SQL
+  CASE
+  WHEN 条件1 THEN 显示的值
+  WHEN 条件2 THEN 显示的值
+  ...
+  END
+```
++ 与聚合函数的联用
+  + 实现列方向上的聚合
 
 ***
 
@@ -116,7 +130,90 @@
 
  <img width="2466" height="2432" alt="day14" src="https://github.com/user-attachments/assets/51b11b44-ff63-4c5c-9173-e91d87959bda" />
 
- 
+ ***
 
+ # 创建数据库
+ + charset
+```SQL
+CREATE DATABASE nocturnshop(数据库名称) CHARSET=utf8mb4(支持中文显示的编码规则)
+```
+
+***
+
+# python 与 mysql 的交互
+
+<img width="2700" height="1886" alt="day18" src="https://github.com/user-attachments/assets/9205dfbd-ee29-4072-bd39-e2e73a3bed46" />
+
+<img width="2478" height="2816" alt="day19_compressed" src="https://github.com/user-attachments/assets/29aff250-498f-45d8-a582-6652b81153ab" />
+
+***
+
+# 表格的创建与修改
++ create
+  + 利用CREATE为指定的数据库创建表时，需要指出表格的名称，字段名以及该字段的类型与约束
+  + 一个字段的名称，类型，约束之间要以空格分开，而不同的字段间需要使用逗号分隔
+  ```SQL
+  CREATE TABLE study_info.'student'(
+  'id' INT PRIMARY KEY NOT NULL,
+  'name' VARCHAR(10)(存储长度为10) NOT NULL,
+  'gender' VARCHAR(2) DEFAULT'保密',
+  'class_id' INT NOT NULL
+  ```
+
+## 约束类型和定义
+
++ SQL中的常见约束类型包括：
+
+ + 非空约束（NOT NULL）：确保列不接受NULL值。
+
+ + 唯一性约束（UNIQUE）：保证列中的每个值都是唯一的。
+
+ + 主键约束（PRIMARY KEY）：结合了NOT NULL和UNIQUE，确保列或列组合有唯一标识，便于快速查找特定记录。
+
+ + 外键约束（FOREIGN KEY）：确保一个表中的数据匹配另一个表中的值，维护不同表之间的关系。
+
+ + 检查约束（CHECK）：确保列中的值满足特定条件。
+
+ + 默认值约束（DEFAULT）：为列指定默认值。
+    + EG:在创建表时，可以使用DEFAULT关键字来设置默认值约束。具体的语法如下：
+         + <字段名> <数据类型> DEFAULT <默认值>;
+ + 定义约束时，可以为约束命名，以便于管理和引用。如果未指定名称，系统将生成一个唯一的名称。
+***
++ ALTER
++ 通过alter我们可以对表格进行添加ADD，修改CHANGE,MODIFY,删除drop并在该关键字后制定表的名称与归属
++ 运用这些以上关键字时，同样需要提供字段名，类型，若必要的话还需要设置约束
++ 添加列
+ + 要在表中添加新列，可以使用以下语法：
+```SQL
+ALTER TABLE table_name
+ADD column_name datatype;
+```
+
++ 删除列
+ + 如果需要从表中删除列，可以使用以下语法：
+```SQL
+ALTER TABLE table_name
+DROP COLUMN column_name;
+```
+
++ 修改列数据类型
+ + 要更改表中某个列的数据类型，可以使用以下语法：
+```SQL
+ALTER TABLE table_name
+ALTER COLUMN column_name datatype;
+```
+
++ 综合示例
+ + 同时对表执行多个操作，如添加、删除和修改多个列，只需用逗号隔开每个操作：
+```SQL
+ALTER TABLE table_name
+ADD column1 datatype,
+DROP COLUMN column2,
+MODIFY column3 datatype;
+```
+
+***
+# 数据的更新与删除
+<img width="2620" height="3092" alt="img_1" src="https://github.com/user-attachments/assets/5a198082-f3b6-415f-9abe-1d81e42f349d" />
 
 
