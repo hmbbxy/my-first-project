@@ -392,6 +392,599 @@ eyes_black()
 # 全局控制命令
 <img width="2068" height="1080" alt="0652f52d42562a141bb7c70964bc659d" src="https://github.com/user-attachments/assets/cce64feb-3eae-4351-829b-c563f9e0a233" />
 
+# 动态emoj
++ (眼球会动）
+```python
+#  定义一个eyes_black()函数绘制黑眼珠，参数为x
+def eyes_black(x):
+    # 使用seth()函数将角度设置为0
+    seth(0)
+    # 使用forward()函数前进x步
+   forward(x)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用pensize()函数设置画笔粗细为15
+    pensize(15)
+    # 使用pencolor()函数设置画笔颜色为"black"
+    pencolor("black")
+    # 使用circle()函数绘制一个半径为5，圆心角为360度
+    circle(5,360)
+    # 使用penup()函数抬笔
+    penup()
+    # 使用forward()函数前进110步
+    forward(110)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用circle()函数绘制一个半径为5的圆
+    circle(5,360)
+    # 使用hideturtle()函数隐藏画笔
+    hideturtle()
+```
+
+# 表情包文字
+接下来我们需要制作表情包文字。
+
+步骤如下：
+1. 用input函数邀请用户输入自定义文字内容。
+2. 定义一个write_emoji()函数书写文字内容
+```python
+# 导入turtle中的全部函数
+from turtle import *
+# 使用input()函数引导用户输入表情包语录
+# 文案内容为"请输入表情包语录："
+content = input("请输入表情包语录：")
+# 定义draw_face()函数绘制脸部
+def draw_face():
+    # 抬起画笔
+    penup()
+    # 移动到坐标点为(-120,0)的地方
+    goto(-120,0)
+    # 落笔
+    pendown()
+    # 将画笔颜色设置为黑色"black"
+    pencolor("black")
+    # 将画笔粗细设置为4
+    pensize(4)
+    # 调整海龟朝向-90度方向
+    seth(-90)
+    # 开始填充颜色
+    begin_fill()
+    # 画圆，圆的半径为130，圆心角为360度
+    circle(130,360)
+    # 填充颜色为"gold"
+    fillcolor("gold")
+    # 停止填充颜色
+    end_fill()
+# 定义draw_mouth() 函数绘制嘴巴   
+def draw_mouth():
+    # 抬起画笔
+    penup()
+    # 移动到坐标点为(-80,-10)的位置
+    goto(-80,-10)
+    # 落笔
+    pendown()
+    # 调整海龟朝向-90度方向
+    seth(-90)
+    # 绘制一个半径为90，圆心角为180的半圆
+    circle(90,180)
+# 定义eyes_white()函数绘制眼白   
+def eyes_white():
+    # 使用penup()函数抬起画笔
+    penup()
+    # 使用forward()函数往前直走60步
+    forward(60)
+    # 使用seth()函数将角度调整为155度
+    seth(155)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用pensize()函数设置画笔粗细为20
+    pensize(20)
+    # 使用pencolor()函数设置画笔颜色为"white"
+    pencolor("white")
+    # 使用circle()函数绘制一个半径为100，圆心角为45的弧形
+    circle(100,45)
+    # 使用penup()函数抬笔
+    penup()
+    # 使用seth()函数朝向180度方向
+    seth(180)
+    # 使用forward()函数向前走40步
+    forward(40)
+    # 使用seth()函数将角度调整为155度
+    seth(155)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用circle()函数绘制一个半径为100，圆心角为45度的圆弧
+    circle(100,45)
+    # 使用penup()函数抬笔
+    penup()
+
+#  定义一个eyes_black()函数绘制黑眼珠，参数为x
+def eyes_black(x):
+    # 使用seth()函数将角度设置为0
+    seth(0)
+    # 使用forward()函数前进x步
+    forward(x)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用pensize()函数设置画笔粗细为15
+    pensize(15)
+    # 使用pencolor()函数设置画笔颜色为"black"
+    pencolor("black")
+    # 使用circle()函数绘制一个半径为5，圆心角为360度
+    circle(5,360)
+    # 使用penup()函数抬笔
+    penup()
+    # 使用forward()函数前进110步
+    forward(110)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用circle()函数绘制一个半径为5的圆，圆心角为360度
+    circle(5,360)
+    # 使用hideturtle()函数隐藏画笔
+    hideturtle()
+    
+# 定义一个write_emoji()函数书写文字 
+def write_emoji():
+    # 使用penup()函数抬起画笔
+    penup()
+    # 使用fillcolor()函数将填充颜色设置为black
+    fillcolor("black")
+    # 使用goto()函数移到坐标点为(0,-170)的位置
+    goto(0,-170)
+    # 使用write()函数设置书写内容
+    # 文字内容为content，居中方式为align = "center"，字体类别，大小和粗细为font=("Arial",25,"bold")
+    write(content,align = "center",font=("Arial",25,"bold"))      
 
 
+# 调用draw_face()函数画脸
+draw_face()
+# 调用draw_mouth()函数画嘴巴
+draw_mouth()
+# 调用eyes_white()函数画白眼珠
+eyes_white()    
+# 调用eyes_black(x)函数将参数设置为60，查看绘图效果
+eyes_black(60)
+# 调用write_emoji()函数设置书写内容
+write_emoji()
+```
 
+# 完成绘制表情包的函数，绘制黑眼珠在右侧的表情包。
+
+1.定义函数emoji(x)绘制表情包，参数x表示黑眼珠移动距离。
+
+2.函数包含：draw_face(),draw_mouth(),eyes_white(),eyes_black(x),write_emoji()共5个部分。
+
+3.调用emoji(x)函数，将参数设置为60，绘制黑眼珠在右侧的表情包
+
+```python
+# 导入turtle中的全部函数
+from turtle import *
+# 使用input()函数引导用户输入表情包语录
+# 文案内容为"请输入表情包语录 :"
+content = input("请输入表情包语录 :")
+# 定义draw_face()函数绘制脸部
+def draw_face():
+    # 抬起画笔
+    penup()
+    # 移动到坐标点为(-120,0)的地方
+    goto(-120,0)
+    # 落笔
+    pendown()
+    # 将画笔颜色设置为黑色"black"
+    pencolor("black")
+    # 将画笔粗细设置为4
+    pensize(4)
+    # 调整海龟朝向-90度方向
+    seth(-90)
+    # 开始填充颜色
+    begin_fill()
+    # 画圆，圆的半径为130，圆心角为360度
+    circle(130,360)
+    # 填充颜色为"gold"
+    fillcolor("gold")
+    # 停止填充颜色
+    end_fill()
+# 定义draw_mouth() 函数绘制嘴巴   
+def draw_mouth():
+    # 抬起画笔
+    penup()
+    # 移动到坐标点为(-80,-10)的位置
+    goto(-80,-10)
+    # 落笔
+    pendown()
+    # 调整海龟朝向-90度方向
+    seth(-90)
+    # 绘制一个半径为90，圆心角为180的半圆
+    circle(90,180)
+# 定义eys_white()函数绘制眼白   
+def eyes_white():
+    # 使用penup()函数抬起画笔
+    penup()
+    # 使用forward()函数往前直走60步
+    forward(60)
+    # 使用seth()函数将角度调整为155度
+    seth(155)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用pensize()函数设置画笔粗细为20
+    pensize(20)
+    # 使用pencolor()函数设置画笔颜色为"white"
+    pencolor("white")
+    # 使用circle()函数绘制一个半径为100，圆心角为45的弧形
+    circle(100,45)
+    # 使用penup()函数抬笔
+    penup()
+    # 使用seth()函数朝向180度方向
+    seth(180)
+    # 使用forward()函数向前走40步
+    forward(40)
+    # 使用seth()函数将角度调整为155度
+    seth(155)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用circle()函数绘制一个半径为100，圆心角为45度的圆弧
+    circle(100,45)
+    # 使用penup()函数抬笔
+    penup()
+
+#  定义一个eyes_black()函数绘制黑眼珠，参数为x
+def eyes_black(x):
+    # 使用seth()函数将角度设置为0
+    seth(0)
+    # 使用forward()函数前进x步
+    forward(x)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用pensize()函数设置画笔粗细为15
+    pensize(15)
+    # 使用pencolor()函数设置画笔颜色为"black"
+    pencolor("black")
+    # 使用circle()函数绘制一个半径为5，圆心角为360度
+    circle(5,360)
+    # 使用penup()函数抬笔
+    penup()
+    # 使用forward()函数前进110步
+    forward(110)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用circle()函数绘制一个半径为5的圆，圆心角为360度
+    circle(5,360)
+    # 使用hideturtle()函数隐藏画笔
+    hideturtle()
+    
+# 定义一个write_emoji()函数书写文字 
+def write_emoji():
+    # 使用penup()函数抬起画笔
+    penup()
+    # 使用fillcolor()函数将填充颜色设置为black
+    fillcolor("black")
+    # 使用goto()函数移到坐标点为(0,-170)的位置
+    goto(0,-170)
+    # 使用write()函数设置书写内容
+    # 文字内容为love，居中方式为align = "center"，字体类别，大小和粗细为font=("Arial",25,"bold")
+    write(content,align = "center",font=("Arial",25,"bold"))     
+
+# 定义一个函数绘制emoji绘制表情，参数x表示移动位置
+def emoji(x):
+    # 使用draw_face()函数绘制脸部
+    draw_face()
+    # 使用draw_mouth()函数绘制嘴巴
+    draw_mouth()
+    # 使用eyes_white()函数绘制白眼珠
+    eyes_white()
+    # 使用eyes_black(x)函数绘制黑眼珠，参数x表示移动距离
+    eyes_black(x)
+    # 使用write_emoji()函数书写表情包文字
+    write_emoji()
+    
+# 调用emoji(x)函数，将参数设置为60，绘制表情2
+emoji(60)
+```
+
+# 动画切换
++ 接下来我们要完成最重要的动画部分啦～
++ 根据动画的实现原理，我们可以将两张emoji图片反复切换播放，实现动图效果，也就是：
+1.展示emoji1
+2.刷新屏幕
+3.展示emoji2
+
++ 使用tracer(0)函数，我们关闭了轨迹，即我们看不到小海龟的爬行过程。
++ 在图形绘制完毕后，再使用update()函数，就可以看到绘制好的整个图形。
++ `update()`一个函数，用于刷新画面。
+
+## 制作turtle的动画效果。
+1.设置计数器，动10次
+2.关闭动画，绘制表情包1，刷新画面
+3.关闭动画，绘制表情包2，刷新画面
+4.计数器加1
+```python
+# 导入turtle中的全部函数
+from turtle import *
+# 使用input()函数引导用户输入表情包语录
+# 文案内容为"请输入表情包语录 :"
+content = input("请输入表情包语录 :")
+# 定义draw_face()函数绘制脸部
+def draw_face():
+    # 抬起画笔
+    penup()
+    # 移动到坐标点为(-120,0)的地方
+    goto(-120,0)
+    # 落笔
+    pendown()
+    # 将画笔颜色设置为黑色"black"
+    pencolor("black")
+    # 将画笔粗细设置为4
+    pensize(4)
+    # 调整海龟朝向-90度方向
+    seth(-90)
+    # 开始填充颜色
+    begin_fill()
+    # 画圆，圆的半径为130，圆心角为360度
+    circle(130,360)
+    # 填充颜色为"gold"
+    fillcolor("gold")
+    # 停止填充颜色
+    end_fill()
+# 定义draw_mouth() 函数绘制嘴巴   
+def draw_mouth():
+    # 抬起画笔
+    penup()
+    # 移动到坐标点为(-80,-10)的位置
+    goto(-80,-10)
+    # 落笔
+    pendown()
+    # 调整海龟朝向-90度方向
+    seth(-90)
+    # 绘制一个半径为90，圆心角为180的半圆
+    circle(90,180)
+# 定义eys_white()函数绘制眼白   
+def eyes_white():
+    # 使用penup()函数抬起画笔
+    penup()
+    # 使用forward()函数往前直走60步
+    forward(60)
+    # 使用seth()函数将角度调整为155度
+    seth(155)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用pensize()函数设置画笔粗细为20
+    pensize(20)
+    # 使用pencolor()函数设置画笔颜色为"white"
+    pencolor("white")
+    # 使用circle()函数绘制一个半径为100，圆心角为45的弧形
+    circle(100,45)
+    # 使用penup()函数抬笔
+    penup()
+    # 使用seth()函数朝向180度方向
+    seth(180)
+    # 使用forward()函数向前走40步
+    forward(40)
+    # 使用seth()函数将角度调整为155度
+    seth(155)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用circle()函数绘制一个半径为100，圆心角为45度的圆弧
+    circle(100,45)
+    # 使用penup()函数抬笔
+    penup()
+
+#  定义一个eyes_black()函数绘制黑眼珠，参数为x
+def eyes_black(x):
+    # 使用seth()函数将角度设置为0
+    seth(0)
+    # 使用forward()函数前进x步
+    forward(x)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用pensize()函数设置画笔粗细为15
+    pensize(15)
+    # 使用pencolor()函数设置画笔颜色为"black"
+    pencolor("black")
+    # 使用circle()函数绘制一个半径为5，圆心角为360度
+    circle(5,360)
+    # 使用penup()函数抬笔
+    penup()
+    # 使用forward()函数前进110步
+    forward(110)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用circle()函数绘制一个半径为5的圆，圆心角为360度
+    circle(5,360)
+    # 使用hideturtle()函数隐藏画笔
+    hideturtle()
+    
+# 定义一个write_emoji()函数书写文字 
+def write_emoji():
+    # 使用penup()函数抬起画笔
+    penup()
+    # 使用fillcolor()函数将填充颜色设置为black
+    fillcolor('black')
+    # 使用goto()函数移到坐标点为(0,-170)的位置
+    goto(0,-170)
+    # 使用write()函数设置书写内容
+    # 文字内容为love，居中方式为align = "center"，字体类别，大小和粗细为font=("Arial",25,"bold")
+    write(content,align = "center",font=("Arial",25,"bold"))     
+
+# 定义一个函数绘制emoji绘制表情，参数x表示移动位置
+def emoji(x):
+    # 使用draw_face()函数绘制脸部
+    draw_face()
+    # 使用draw_mouth()函数绘制嘴巴
+    draw_mouth()
+    # 使用eyes_white()函数绘制白眼珠
+    eyes_white()
+    # 使用eyes_black(x)函数绘制黑眼珠，参数x表示移动距离
+    eyes_black(x)
+    # 使用write_emoji()函数书写表情包文字
+    write_emoji()
+    
+# 设置一个计数器，从0开始计数   
+n = 0
+# 当计数小于10时
+while n < 10:
+    # 使用tracer()函数，关闭动画
+    tracer(0)
+    # 绘制表情包1,emoji(6)
+    emoji(6)
+    # 使用update()函数刷新画面
+    update()
+     # 使用tracer()函数，关闭动画
+    tracer(0)
+    # 绘制表情包2,emoji(60)
+    emoji(60)
+    # 使用update()函数刷新画面
+    update()
+    # 计数器加1
+    n = n + 1
+```
+
+# 效果改进
++ 现在的效果有一些鬼畜。
++ 我们期望可以每停顿一段时间，眼珠再转动
++ `time.sleep()`
+
+```python
+# 导入turtle中的全部函数
+from turtle import *
+# 使用input()函数引导用户输入表情包语录
+# 文案内容为"请输入表情包语录 :"
+content = input("请输入表情包语录 :")
+# 定义draw_face()函数绘制脸部
+def draw_face():
+    # 抬起画笔
+    penup()
+    # 移动到坐标点为(-120,0)的地方
+    goto(-120,0)
+    # 落笔
+    pendown()
+    # 将画笔颜色设置为黑色"black"
+    pencolor("black")
+    # 将画笔粗细设置为4
+    pensize(4)
+    # 调整海龟朝向-90度方向
+    seth(-90)
+    # 开始填充颜色
+    begin_fill()
+    # 画圆，圆的半径为130，圆心角为360度
+    circle(130,360)
+    # 填充颜色为"gold"
+    fillcolor("gold")
+    # 停止填充颜色
+    end_fill()
+# 定义draw_mouth() 函数绘制嘴巴   
+def draw_mouth():
+    # 抬起画笔
+    penup()
+    # 移动到坐标点为(-80,-10)的位置
+    goto(-80,-10)
+    # 落笔
+    pendown()
+    # 调整海龟朝向-90度方向
+    seth(-90)
+    # 绘制一个半径为90，圆心角为180的半圆
+    circle(90,180)
+# 定义eys_white()函数绘制眼白   
+def eyes_white():
+    # 使用penup()函数抬起画笔
+    penup()
+    # 使用forward()函数往前直走60步
+    forward(60)
+    # 使用seth()函数将角度调整为155度
+    seth(155)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用pensize()函数设置画笔粗细为20
+    pensize(20)
+    # 使用pencolor()函数设置画笔颜色为"white"
+    pencolor("white")
+    # 使用circle()函数绘制一个半径为100，圆心角为45的弧形
+    circle(100,45)
+    # 使用penup()函数抬笔
+    penup()
+    # 使用seth()函数朝向180度方向
+    seth(180)
+    # 使用forward()函数向前走40步
+    forward(40)
+    # 使用seth()函数将角度调整为155度
+    seth(155)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用circle()函数绘制一个半径为100，圆心角为45度的圆弧
+    circle(100,45)
+    # 使用penup()函数抬笔
+    penup()
+
+#  定义一个eyes_black()函数绘制黑眼珠，参数为x
+def eyes_black(x):
+    # 使用seth()函数将角度设置为0
+    seth(0)
+    # 使用forward()函数前进x步
+    forward(x)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用pensize()函数设置画笔粗细为15
+    pensize(15)
+    # 使用pencolor()函数设置画笔颜色为"black"
+    pencolor("black")
+    # 使用circle()函数绘制一个半径为5，圆心角为360度
+    circle(5,360)
+    # 使用penup()函数抬笔
+    penup()
+    # 使用forward()函数前进110步
+    forward(110)
+    # 使用pendown()函数落笔
+    pendown()
+    # 使用circle()函数绘制一个半径为5的圆，圆心角为360度
+    circle(5,360)
+    # 使用hideturtle()函数隐藏画笔
+    hideturtle()
+    
+# 定义一个write_emoji()函数书写文字 
+def write_emoji():
+    # 使用penup()函数抬起画笔
+    penup()
+    # 使用fillcolor()函数将填充颜色设置为black
+    fillcolor("black")
+    # 使用goto()函数移到坐标点为(0,-170)的位置
+    goto(0,-170)
+    # 使用write()函数设置书写内容
+    # 文字内容为love，居中方式为align = "center"，字体类别，大小和粗细为font=("Arial",25,"bold")
+    write(content,align = "center",font=("Arial",25,"bold"))     
+
+# 定义一个函数绘制emoji绘制表情，参数x表示移动位置
+def emoji(x):
+    # 使用draw_face()函数绘制脸部
+    draw_face()
+    # 使用draw_mouth()函数绘制嘴巴
+    draw_mouth()
+    # 使用eyes_white()函数绘制白眼珠
+    eyes_white()
+    # 使用eyes_black(x)函数绘制黑眼珠，参数x表示移动距离
+    eyes_black(x)
+    # 使用write_emoji()函数书写表情包文字
+    write_emoji()
+# 导入time函数
+import time
+# 设置一个计数器，从0开始计数   
+n = 0
+# 当计数小于10时
+while n < 10:
+    # 使用tracer()函数，关闭动画
+    tracer(0)
+    # 绘制表情包1,emoji(6)
+    emoji(6)
+    # 使用update()函数刷新画面
+    update()
+    # 使用time.sleep()函数设置停顿时间0.5秒
+    time.sleep(0.5)
+    # 使用tracer()函数，关闭动画
+    tracer(0)
+    # 绘制表情包2,emoji(60)
+    emoji(60)
+    # 使用update()函数刷新画面
+    update()
+    # 使用time.sleep()函数设置停顿时间0.5秒
+    time.sleep(0.5)
+    # 计数器加1
+    n = n + 1
+```
