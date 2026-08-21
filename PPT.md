@@ -164,3 +164,142 @@ for slide in pptxFile.slides:
                     # print()输出texts
                     print(texts)
 ```
+***
++ python-docx 模块只可读取、写入 .docx 文件，不支持 .doc 文件
+
+# 把 .pptx 文件中的文本内容全部写入 Word 文档中：
+
+首先，就需要新建一个空白 Word 文档；
+
+其次，将文本内容全部添加进 Word 文档中；
+
+最后，保存这个文档。
+
+## 新建Word文档
+```python
+# 使用import导入docx
+import docx
+
+# 新建一个空白Word文档，赋值给变量docxFile
+docxFile = docx.Document()
+```
+
+## 添加段落
++ `add_paragraph()` 函数可以将一段文本添加到 Word 文档中。
+
+将要写入的文本以字符串形式传入 `add_paragraph()` 函数中，就可以在 Word 文档中添加一个段落
+
+```python
+# 向文档中添加段落"何当共剪西窗烛"
+# 向文档中添加段落"却话巴山夜雨时"
+docxFile.add_paragraph("何当共剪西窗烛")
+docxFile.add_paragraph("却话巴山夜雨时")
+```
+
+```python
+# 使用from...import从pptx模块中导入Presentation
+from pptx import Presentation
+# 使用import导入docx
+import docx
+
+# 新建一个空白Word文档，赋值给变量docxFile
+docxFile = docx.Document()
+
+# 将.pptx文件路径赋值给变量path
+path = "/Users/xiaohe/statistics.pptx"
+# 读取path并赋值给变量pptxFile
+pptxFile = Presentation(path)
+
+# for循环遍历pptxFile中的.slides属性，赋值给slide
+for slide in pptxFile.slides:
+
+    # for循环遍历slide中.shapes属性，赋值给变量shape
+    for shape in slide.shapes:
+        # 判断形状中是否有文本框
+        if shape.has_text_frame == True:
+            # 读取形状中的文本框，并赋值给变量textFrame
+            textFrame = shape.text_frame
+        
+            # for循环遍历文本框内的所有段落
+            # 赋值给变量paragraph
+            for paragraph in textFrame.paragraphs:
+                # for循环遍历段落中的所有样式块
+                # 赋值给变量run
+                for run in paragraph.runs:
+                    # 读取样式块中的文本内容
+                    texts = run.text
+                    # 向docxFile中添加段落texts的文本内容
+                    docxFile.add_paragraph(texts)
+
+# 保存文档到指定路径，并命名为"资料.docx"
+docxFile.save("/Users/xiaohe/资料.docx")
+```
+
++ 文本内容全部排列在一起，中间没有换行，也没有提示哪些段落是哪一页的内容，查找起来很不方便，这该怎么办呢？🤔
+
+在这里，我们可以添加标题，让内容有层级，方便查看。
+
+## 添加标题
++ 使用 add_heading() 函数，添加相关参数，就可以在文档中添加标题。
+`docxFile.add_heading("我是标题",level=1)`
++ 标题样式：参数 level 是标题样式，设置为 1 表示一级标题，2表示二级标题，以此类推
++ 思路：
+我们可以将 PPT 的页码，作为标题添加到 Word 文档中。
+
+首先，把变量 n 设置为 1；
+
+接着，程序在读取幻灯片页时，将本页的页码以二级标题的样式添加到 Word 文档中；
+
+然后，在本页内容写入完后，将变量 n 进行累加。
+
+```python
+# 使用from...import从pptx模块中导入Presentation
+from pptx import Presentation
+# 使用import导入docx
+import docx
+
+# 新建一个空白Word文档，赋值给变量docxFile
+docxFile = docx.Document()
+
+# 将.pptx文件路径赋值给变量path
+path = "/Users/xiaohe/statistics.pptx"
+# 读取path并赋值给变量pptxFile
+pptxFile = Presentation(path)
+
+# 将变量n设置为1
+n = 1
+
+# for循环遍历pptxFile中的.slides属性，赋值给slide
+for slide in pptxFile.slides:
+    
+    # 向文档中添加标题f"第{n}页"，为二级标题
+    docxFile.add_heading(f"第{n}页",level=2)
+
+    # for循环遍历slide中.shapes属性，赋值给变量shape
+    for shape in slide.shapes:
+        # 判断形状中是否有文本框
+        if shape.has_text_frame == True:
+            # 读取形状中的文本框，并赋值给变量textFrame
+            textFrame = shape.text_frame
+        
+            # for循环遍历文本框内的所有段落
+            # 赋值给变量paragraph
+            for paragraph in textFrame.paragraphs:
+                # for循环遍历段落中的所有样式块
+                # 赋值给变量run
+                for run in paragraph.runs:
+                    # 读取样式块中的文本内容
+                    texts = run.text
+                    # 向Word文档中添加段落texts的文本内容
+                    docxFile.add_paragraph(texts)
+
+    # 将变量n进行累加
+    n = n + 1
+
+# 保存文档到指定路径，并命名为"资料.docx"
+docxFile.save("/Users/xiaohe/资料.docx")
+```
+
++ 小贴士： PPT 写入 Word 文档时，可以先整理 PPT 中段落里样式块，尽量让一个段落的样式统一。
+
+如果段落中的样式块过多，就会以一个样式块为一个段落写入 Word 文档中，再去调整文本格式就会很麻烦咯╮(￣▽￣)╭
